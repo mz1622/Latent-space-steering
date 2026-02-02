@@ -1,0 +1,32 @@
+# LLaVA Environment Requirements
+# Python 3.10 recommended
+
+# PyTorch (CRITICAL: LLaVA 1.2.2.post1 requires exactly these versions)
+torch==2.1.2
+torchvision==0.16.2
+
+# LLaVA
+llava==1.2.2.post1
+
+# Transformers (compatible with PyTorch 2.1.2)
+transformers==4.36.0
+
+# Core dependencies
+pillow
+requests
+tqdm
+pyyaml
+protobuf
+sentencepiece
+
+# Evaluation
+pycocotools
+scikit-learn
+numpy
+matplotlib
+
+# Utilities
+accelerate
+
+# Note: Install PyTorch with CUDA 11.8 using:
+# pip install torch==2.1.2 torchvision==0.16.2 --index-url https://download.pytorch.org/whl/cu118

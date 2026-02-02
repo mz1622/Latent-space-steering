@@ -1,0 +1,9 @@
+Llava 
+2026-01-31 22:22:35 - hallucination_mitigation - INFO - POPE Results
+2026-01-31 22:22:35 - hallucination_mitigation - INFO - ==================================================
+2026-01-31 22:22:35 - hallucination_mitigation - INFO - Accuracy:  0.8873
+2026-01-31 22:22:35 - hallucination_mitigation - INFO - Precision: 0.8865
+2026-01-31 22:22:35 - hallucination_mitigation - INFO - Recall:    0.8960
+2026-01-31 22:22:35 - hallucination_mitigation - INFO - F1:        0.8912
+2026-01-31 22:22:35 - hallucination_mitigation - INFO - Yes Ratio: 0.5210
+2026-01-31 22:22:35 - hallucination_mitigation - INFO - ==================================================

@@ -1,0 +1,10 @@
+# VTI with high steering strength
+
+steering:
+  method: "mean_difference"
+  config:
+    alpha_image: 1.5
+    alpha_text: 1.5
+    rank: 1
+    mask_ratio: 0.99
+    num_trials: 50

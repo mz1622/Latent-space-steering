@@ -1,0 +1,72 @@
+# Configuration for Qwen3-VL experiments
+
+experiment:
+  name: "qwen3vl_baseline"
+  seed: 42
+  debug: false
+  max_samples: null  # Set to int to limit samples for quick testing
+
+model:
+  name: "Qwen/Qwen3-VL-8B-Instruct"  # Or your local path
+  # Alternative models:
+  # name: "Qwen/Qwen3-VL-2B-Instruct"  # Smaller, faster
+  # name: "Qwen/Qwen3-VL-32B-Instruct"  # Larger, more capable
+  # name: "D:/Hallucination/models/Qwen3-VL-8B-Instruct"  # Local path
+  model_base: null
+  model_type: "qwen3-vl"  # Explicitly specify model type
+  conv_mode: "qwen"
+  device: "auto"  # auto, cuda, mps, cpu
+
+data:
+  # Path to COCO dataset
+  data_file: "D:/Hallucination/Latent-space-steering/data/MSCOCO/"
+  image_folder: "D:/Hallucination/Latent-space-steering/data/MSCOCO/val2014"
+
+  # Demo data for computing directions
+  demo_file: "./experiments/data/hallucination_vti_demos.jsonl"
+  num_demos: 70
+
+  # Evaluation datasets
+  eval_dataset: "mmhal"  # mmhal, chair, pope
+
+# Hallucination detection (placeholder for future)
+detector:
+  type: "passthrough"  # passthrough, uncertainty, probe, etc.
+  config: {}
+
+# Steering method configuration
+steering:
+  method: "mean_difference"  # mean_difference, truthful, autosteer, sea, etc.
+
+  # Method-specific config
+  config:
+    alpha_image: 0.9
+    alpha_text: 0.9
+    rank: 1
+    mask_ratio: 0.99
+    num_trials: 50
+
+# Generation parameters for Qwen3-VL
+generation:
+  num_beams: 1  # Qwen models work better with sampling
+  max_new_tokens: 256
+  do_sample: true
+  temperature: 0.7
+  top_p: 0.9
+
+# Evaluation metrics
+evaluation:
+  metrics:
+    - "accuracy"
+    - "hallucination_rate"
+
+  # For GPT-based evaluation (MMHal)
+  api_key: null  # Set via environment variable OPENAI_API_KEY
+
+# Output configuration
+output:
+  base_dir: "./outputs"
+  save_predictions: true
+  save_artifacts: true
+  save_config: true
+  save_environment: true

@@ -1,0 +1,66 @@
+# Default configuration for hallucination mitigation experiments
+
+experiment:
+  name: "vti_baseline"
+  seed: 42
+  debug: false
+  max_samples: null  # Set to int to limit samples for quick testing
+
+model:
+  name: "D:/Hallucination/models/llava-v1.5-7b"
+  model_base: null
+  conv_mode: "llava_v1"
+  device: "auto"  # auto, cuda, mps, cpu
+
+data:
+  # Path to COCO dataset
+  data_file: "D:/Hallucination/Latent-space-steering/data/MSCOCO/"
+  image_folder: "D:/Hallucination/Latent-space-steering/data/MSCOCO/val2014"
+
+  # Demo data for computing directions
+  demo_file: "./experiments/data/hallucination_vti_demos.jsonl"
+  num_demos: 70
+
+  # Evaluation datasets
+  eval_dataset: "mmhal"  # mmhal, chair, pope
+
+# Hallucination detection (placeholder for future)
+detector:
+  type: "passthrough"  # passthrough, uncertainty, probe, etc.
+  config: {}
+
+# Steering method configuration
+steering:
+  method: "mean_difference"  # mean_difference, truthful, autosteer, sea, etc.
+
+  # Method-specific config
+  config:
+    alpha_image: 0.9
+    alpha_text: 0.9
+    rank: 1
+    mask_ratio: 0.99
+    num_trials: 50
+
+# Generation parameters
+generation:
+  num_beams: 5
+  max_new_tokens: 256
+  do_sample: false
+  temperature: 1.0
+
+# Evaluation metrics
+evaluation:
+  metrics:
+    - "accuracy"
+    - "hallucination_rate"
+
+  # For GPT-based evaluation (MMHal)
+  api_key: null  # Set via environment variable OPENAI_API_KEY
+
+# Output configuration
+output:
+  base_dir: "./outputs"
+  save_predictions: true
+  save_artifacts: true
+  save_config: true
+  save_environment: true

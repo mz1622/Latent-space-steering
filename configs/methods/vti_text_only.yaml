@@ -1,0 +1,10 @@
+# VTI with text steering only (no visual steering)
+
+steering:
+  method: "mean_difference"
+  config:
+    alpha_image: 0.0
+    alpha_text: 0.9
+    rank: 1
+    mask_ratio: 0.99
+    num_trials: 50
